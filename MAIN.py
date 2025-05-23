@@ -167,35 +167,27 @@ def main():
                     print("Pedidos pendientes(1), Pedidos Entregados(2), Todos los pedidos(3)")
                     if int(input("Ingrese opción: ")) == 1:
                         print("Pedidos pendientes:")
+                        print("--------------")
                         for x in range(0,len(sistema_fabrica.pedidos)):
                             if sistema_fabrica.pedidos[x].estado == "Pendiente":
                                 sistema_fabrica.pedidos[x].mostrarPedidos
+                                print("--------------")
                         
                     
                     if int(input("Ingrese opción: ")) == 2:
                         print("Pedidos entregados:")
+                        print("--------------")
                         for x in range(0,len(sistema_fabrica.pedidos)):
                             if sistema_fabrica.pedidos[x].estado == "Entregado":
-                                ped=sistema_fabrica.pedidos[x]
-                                print(f"Cliente ID: {ped.cliente.id}")
-                                print(f"Máquina: {ped.maquina.descripcion}")
-                                print(f"Estado: {ped.estado}")
-                                print(f"Fecha recibido: {ped.fechaRecibido}")
-                                print(f"Fecha entregado: {ped.fechaEntregado}")
-                                print(f"Precio: {ped.precio():.2f}")
-                                print("--------------")
+                                sistema_fabrica.pedidos[x].mostrarPedidos
                                 print("--------------")
                         
                     
                     if int(input("Ingrese opción: ")) == 3:
                         print("Pedidos registrados:")
+                        print("--------------")
                         for ped in sistema_fabrica.pedidos:
-                            print(f"Cliente ID: {ped.cliente.id}")
-                            print(f"Máquina: {ped.maquina.descripcion}")
-                            print(f"Estado: {ped.estado}")
-                            print(f"Fecha recibido: {ped.fechaRecibido}")
-                            print(f"Fecha entregado: {ped.fechaEntregado}")
-                            print(f"Precio: {ped.precio():.2f}")
+                            sistema_fabrica.pedidos[x].mostrarPedidos
                             print("--------------")
 
                 elif opc_list == "3":  # Máquinas
