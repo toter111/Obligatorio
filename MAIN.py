@@ -174,7 +174,7 @@ def main():
                                 print("--------------")
                         
                     
-                    if int(input("Ingrese opción: ")) == 2:
+                    elif int(input("Ingrese opción: ")) == 2:
                         print("Pedidos entregados:")
                         print("--------------")
                         for x in range(0,len(sistema_fabrica.pedidos)):
@@ -183,12 +183,16 @@ def main():
                                 print("--------------")
                         
                     
-                    if int(input("Ingrese opción: ")) == 3:
+                    elif int(input("Ingrese opción: ")) == 3:
                         print("Pedidos registrados:")
                         print("--------------")
                         for ped in sistema_fabrica.pedidos:
                             sistema_fabrica.pedidos[x].mostrarPedidos
                             print("--------------")
+
+                    else:
+                        print("Opción inválida.")
+                        break
 
                 elif opc_list == "3":  # Máquinas
                     print("Máquinas registradas:")
@@ -206,10 +210,15 @@ def main():
                         print("--------------")
 
                         print("Verificando piezas faltantes para pedidos pendientes:")
+                        print("--------------")
                         for pedido in sistema_fabrica.pedidos:
                             if pedido.estado == "Pendiente":
-                                pedido.maquina.faltantes  # ✅ como es @property y hace print, no lleva ()
-                                print("--------------")
+                                maquina_obj = obtener_maquina_objeto(sistema_fabrica, pedido.maquina)  
+                                if maquina_obj:
+                                    for msg in maquina_obj.faltantes:
+                                        print(msg)
+                                else:
+                                    print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
 
                 # elif opc_list == "4":  # Piezas
                 #     print("Piezas registradas:")
@@ -242,6 +251,11 @@ def main():
         else:
             print("Opción inválida.")
 
+def obtener_maquina_objeto(sistema, codigo_o_desc):
+    for maquina in sistema.maquinas:
+        if str(maquina.codigo) == str(codigo_o_desc) or maquina.descripcion == codigo_o_desc:
+            return maquina
+    return None
 
 if __name__ == "__main__":
     main()
