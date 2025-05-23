@@ -184,6 +184,7 @@ def main():
                                 print(f"Fecha entregado: {ped.fechaEntregado}")
                                 print(f"Precio: {ped.precio():.2f}")
                                 print("--------------")
+                                print("--------------")
                         
                     
                     if int(input("Ingrese opción: ")) == 3:
