@@ -34,7 +34,6 @@ def main():
                 if opc_reg == "1":  # Pieza
                     desc = input("Descripción de la pieza: ")
                     costo = float(input("Costo de fabricacion de la pieza: "))
-                    print("Precio de compra de la pieza:",(costo*1.5))
                     cantidad = int(input("Cantidad en stock: "))
                     
                     
