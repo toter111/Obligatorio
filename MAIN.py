@@ -220,16 +220,6 @@ def main():
                                 else:
                                     print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
 
-                # elif opc_list == "4":  # Piezas
-                #     print("Piezas registradas:")
-                #     print("--------------")
-                #     for p in sistema_fabrica.piezas:
-                #         print(f"Código: {p.codigo} - Descripción: {p.descPieza} - Costo: {p.costoPieza} - Stock: {p.cantidadPieza}")
-                #     print("--------------")
-                #     for x in range(0,len(sistema_fabrica.pedidos)):
-                #         if sistema_fabrica.pedidos[x].estado == "Pendiente":
-                #             sistema_fabrica.pedidos[x].maquina.faltantes
-                #             print("--------------")
                         
 
                 elif opc_list == "5":  # Contabilidad
