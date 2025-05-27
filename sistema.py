@@ -1,9 +1,9 @@
 from datetime import datetime
-from entities.maquina import Maquina
+from maquina import Maquina
 
 from reposicion import Reposicion
 from pieza import Pieza
-from entities.cliente import Cliente
+from cliente import Cliente
 from pedido import Pedido
 
 

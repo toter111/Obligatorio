@@ -1,5 +1,4 @@
 from pieza import Pieza
-from sistema import Sistema
 
 class Maquina:
     def __init__(self, codigo, descripcion):
