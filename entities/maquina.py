@@ -39,6 +39,6 @@ class Maquina:
         return f"Código: {self.codigo}, Desc: {self.descripcion}, Costo Producción: ${self.costo_produccion():.2f}"
     
     def mostrar_maquinas(self):
-        for maquina in sistema_fabrica.maquinas:
+        for maquina in Sistema.maquinas:
             return f"Código: {self.codigo}, Desc: {self.descripcion}, Costo Producción: ${self.costo_produccion():.2f}, Precio: {(self.costo_produccion)*1.5}"
         
