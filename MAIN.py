@@ -196,10 +196,14 @@ def main():
                 elif opc_list == "3":  # Máquinas
                     print("Máquinas registradas:")
                     for m in sistema_fabrica.maquinas:
-                        print(f"Código: {m.codigo} - Descripción: {m.descripcion}")
-                        print("Piezas requeridas:")
-                        for i, pieza in enumerate(m.piezas_requeridas):
-                            print(f" - {pieza.descPieza}: {m.cantidades[i]}")
+                        for maquina in Sistema.maquinas:
+                            if m.disponibilidad():
+                                dis= "Disponible"
+                            else:
+                                dis= "No disponible"
+                            f"Código: {m.codigo}, Desc: {m.descripcion}, Costo Producción: ${m.costo_produccion():.2f}, Precio: {(m.costo_produccion)*1.5}, Disponibilidad: {dis}"
+        
+
                         print("--------------")
 
                 elif opc_list == "4":  # Piezas
