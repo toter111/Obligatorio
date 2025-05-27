@@ -2,13 +2,13 @@
 
 from datetime import datetime
 
-from cliente import Cliente, ClienteParticular, Empresa
+from entities.cliente import Cliente, ClienteParticular, Empresa
 
-from pieza import Pieza
-from maquina import Maquina
-from pedido import Pedido
-from reposicion import Reposicion
-from sistema import Sistema
+from entities.pieza import Pieza
+from entities.maquina import Maquina
+from entities.pedido import Pedido
+from entities.reposicion import Reposicion
+from entities.sistema import Sistema
 
 def main():
     sistema_fabrica = Sistema()

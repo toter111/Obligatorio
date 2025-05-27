@@ -1,5 +1,6 @@
-from pieza import Pieza
-from sistema import Sistema
+from entities.pieza import Pieza
+from entities.sistema import Sistema
+
 class Maquina:
     def __init__(self, codigo, descripcion):
         self.codigo = codigo
