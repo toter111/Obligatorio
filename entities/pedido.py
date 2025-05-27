@@ -1,5 +1,5 @@
 from datetime import datetime
-from cliente import Empresa, ClienteParticular
+from entities.cliente import Empresa, ClienteParticular
 
 class Pedido:
     def __init__(self, cliente, maquina, fechaRecibido=None, fechaEntregado=None, estado="Pendiente"):

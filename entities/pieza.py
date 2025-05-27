@@ -1,5 +1,5 @@
 class Pieza:
-    def __init__(self,descPieza,costoPieza,cantidadPieza):
+    def __init__(self,descPieza,costoPieza,cantidadPieza): #agregar el lote
         self.codigo=0
         self.descPieza=descPieza
         self.costoPieza=costoPieza
