@@ -1,4 +1,4 @@
-from pieza import Pieza
+from entities.pieza import Pieza
 from sistema import Sistema
 
 class Maquina:
