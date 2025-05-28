@@ -198,7 +198,7 @@ def main():
                     dis="No disponible"
                     for m in sistema_fabrica.maquinas:
                         for maquina in sistema_fabrica.maquinas:
-                            if m.disponibilidad:
+                            if maquina.disponibilidad:
                                 dis= "Disponible"
                             else:
                                 dis= "No disponible"
