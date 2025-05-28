@@ -11,14 +11,14 @@ class Maquina:
         self.piezas_requeridas.append(pieza)
         self.cantidades.append(cantidad)
 
-    @property
+    
     def disponibilidad(self):
         for i, pieza in enumerate(self.piezas_requeridas):
             if pieza.cantidadPieza < self.cantidades[i]:
                 return False
         return True
     
-    @property
+    
     def faltantes(self):
         mensajes = []
         for i, pieza in enumerate(self.piezas_requeridas):
