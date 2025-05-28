@@ -13,10 +13,11 @@ class Maquina:
 
     
     def disponibilidad(self):
+        dis=False
         for i, pieza in enumerate(self.piezas_requeridas):
             if pieza.cantidadPieza < self.cantidades[i]:
-                return False
-        return True
+                dis=True
+        return dis
     
     
     def faltantes(self):

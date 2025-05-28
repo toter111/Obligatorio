@@ -195,16 +195,19 @@ def main():
 
                 elif opc_list == "3":  # Máquinas
                     print("Máquinas registradas:")
+                    dis="No disponible"
                     for m in sistema_fabrica.maquinas:
-                        for maquina in Sistema.maquinas:
-                            if m.disponibilidad():
+                        for maquina in sistema_fabrica.maquinas:
+                            if m.disponibilidad:
                                 dis= "Disponible"
                             else:
                                 dis= "No disponible"
-                            f"Código: {m.codigo}, Desc: {m.descripcion}, Costo Producción: ${m.costo_produccion():.2f}, Precio: {(m.costo_produccion)*1.5}, Disponibilidad: {dis}"
-        
-
+                            precio=m.costo_produccion()*1.5
+                        
                         print("--------------")
+                        print(f"Código: {m.codigo}, Desc: {m.descripcion}, Costo Producción: ${m.costo_produccion():.2f}, Precio: {precio:.2f}, Disponibilidad: {dis}")
+    
+                    print("--------------")
 
                 elif opc_list == "4":  # Piezas
                     print("Piezas registradas:")
