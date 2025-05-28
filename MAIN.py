@@ -211,17 +211,18 @@ def main():
                     for p in sistema_fabrica.piezas:
                         print(f"Código: {p.codigo} - Descripción: {p.descPieza} - Costo: {p.costoPieza} - Stock: {p.cantidadPieza}")
                         print("--------------")
+                    sistema_fabrica.listar_faltantes_pedidos_pendientes()
 
-                        print("Verificando piezas faltantes para pedidos pendientes:")
-                        print("--------------")
-                        for pedido in sistema_fabrica.pedidos:
-                            if pedido.estado == "Pendiente":
-                                maquina_obj = obtener_maquina_objeto(sistema_fabrica, pedido.maquina)  
-                                if maquina_obj:
-                                    for msg in maquina_obj.faltantes:
-                                        print(msg)
-                                else:
-                                    print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
+                        # print("Verificando piezas faltantes para pedidos pendientes:")
+                        # print("--------------")
+                        # for pedido in sistema_fabrica.pedidos:
+                        #     if pedido.estado == "Pendiente":
+                        #         maquina_obj = obtener_maquina_objeto(sistema_fabrica, pedido.maquina)  
+                        #         if maquina_obj != 0:
+                        #             for msg in Maquina.maquina_obj.faltantes:
+                        #                 print(msg)
+                        #         else:
+                        #             print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
 
                         
 
@@ -244,11 +245,11 @@ def main():
         else:
             print("Opción inválida.")
 
-def obtener_maquina_objeto(sistema, codigo_o_desc):
-    for maquina in sistema.maquinas:
-        if str(maquina.codigo) == str(codigo_o_desc) or maquina.descripcion == codigo_o_desc:
-            return maquina
-    return None
+# def obtener_maquina_objeto(sistema, codigo_o_desc):
+#     for maquina in sistema.maquinas:
+#         if str(maquina.codigo) == str(codigo_o_desc) or maquina.descripcion == codigo_o_desc:
+#             return maquina
+#     return None
 
 if __name__ == "__main__":
     main()
