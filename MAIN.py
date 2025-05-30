@@ -230,6 +230,7 @@ def main():
                         
 
                 elif opc_list == "5":  # Contabilidad
+                    precio_total = 0
                     for ped in sistema_fabrica.pedidos:
                         precio_total += ped.precio()
                     costo_total = precio_total / 1.5
