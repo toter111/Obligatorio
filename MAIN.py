@@ -215,18 +215,6 @@ def main():
                         print(f"Código: {p.codigo} - Descripción: {p.descPieza} - Costo: {p.costoPieza} - Stock: {p.cantidadPieza}")
                         print("--------------")
                     sistema_fabrica.listar_faltantes_pedidos_pendientes()
-
-                        # print("Verificando piezas faltantes para pedidos pendientes:")
-                        # print("--------------")
-                        # for pedido in sistema_fabrica.pedidos:
-                        #     if pedido.estado == "Pendiente":
-                        #         maquina_obj = obtener_maquina_objeto(sistema_fabrica, pedido.maquina)  
-                        #         if maquina_obj != 0:
-                        #             for msg in Maquina.maquina_obj.faltantes:
-                        #                 print(msg)
-                        #         else:
-                        #             print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
-
                         
 
                 elif opc_list == "5":  # Contabilidad
@@ -245,9 +233,8 @@ def main():
                     print(f"Ganancia bruta: ${ganancia:.2f}")
                     print(f"Impuesto (25%): ${impuesto:.2f}")
                     print(f"Ganancia final (después de impuestos): ${ganancia_final:.2f}")
-
-                    
-
+                    print("--------------")
+        
                 elif opc_list == "6":
                     break
 
