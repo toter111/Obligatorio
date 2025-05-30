@@ -240,7 +240,7 @@ def main():
                     print("--------------")
                     print("Contabilidad:")
                     print("--------------")
-                    print(f"Precio total: ${precio_total:.2f}")
+                    print(f"ingreso total total: ${precio_total:.2f}")
                     print(f"Costo total: ${costo_total:.2f}")
                     print(f"Ganancia bruta: ${ganancia:.2f}")
                     print(f"Impuesto (25%): ${impuesto:.2f}")
