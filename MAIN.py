@@ -197,15 +197,15 @@ def main():
                     print("Máquinas registradas:")
                     dis="No disponible"
                     for m in sistema_fabrica.maquinas:
-                        for maquina in sistema_fabrica.maquinas:
-                            if maquina.disponibilidad:
+
+                        if m.disponibilidad():
                                 dis= "Disponible"
-                            else:
-                                dis= "No disponible"
-                            precio=m.costo_produccion()*1.5
+                        else:
+                               dis= "No disponible"
+                        precio=m.costo_produccion()*1.5
                         
                         print("--------------")
-                        print(f"Código: {m.codigo}, Desc: {m.descripcion}, Costo Producción: ${m.costo_produccion():.2f}, Precio: {precio:.2f}, Disponibilidad: {dis}")
+                        print(f"Código: {m.codigo}, Desc: {m.descripcion}, Costo Producción: ${m.costo_produccion():.2f}, Precio: ${precio:.2f}, Disponibilidad: {dis}")
     
                     print("--------------")
 
@@ -230,10 +230,22 @@ def main():
                         
 
                 elif opc_list == "5":  # Contabilidad
-                    total = 0
                     for ped in sistema_fabrica.pedidos:
-                        total += ped.precio()
-                    print(f"Recaudación total de pedidos: {total:.2f}")
+                        precio_total += ped.precio()
+                    costo_total = precio_total / 1.5
+                    ganancia = precio_total - costo_total
+                    impuesto = ganancia * 0.25
+                    ganancia_final = ganancia - impuesto
+                    print("--------------")
+                    print("Contabilidad:")
+                    print("--------------")
+                    print(f"Precio total: ${precio_total:.2f}")
+                    print(f"Costo total: ${costo_total:.2f}")
+                    print(f"Ganancia bruta: ${ganancia:.2f}")
+                    print(f"Impuesto (25%): ${impuesto:.2f}")
+                    print(f"Ganancia final (después de impuestos): ${ganancia_final:.2f}")
+
+                    
 
                 elif opc_list == "6":
                     break
