@@ -3,7 +3,6 @@
 from datetime import datetime
 
 from cliente import Cliente, ClienteParticular, Empresa
-
 from pieza import Pieza
 from maquina import Maquina
 from pedido import Pedido
@@ -187,7 +186,7 @@ def main():
                     elif opc_list == "3":
                         print("Pedidos registrados:")
                         print("--------------")
-                        for ped in sistema_fabrica.pedidos:
+                        for x in range(0,len(sistema_fabrica.pedidos)):
                             sistema_fabrica.pedidos[x].mostrarPedidos
                             print("--------------")
 
