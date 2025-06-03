@@ -163,17 +163,19 @@ def main():
 
 
                 elif opc_list == "2":  # Pedidos
+                 
                     print("Pedidos pendientes(1), Pedidos Entregados(2), Todos los pedidos(3)")
-                    if int(input("Ingrese opción: ")) == 1:
+                    opc_list = input("Ingrese opción: ")
+                    if opc_list == "1":
                         print("Pedidos pendientes:")
                         print("--------------")
                         for x in range(0,len(sistema_fabrica.pedidos)):
                             if sistema_fabrica.pedidos[x].estado == "Pendiente":
                                 sistema_fabrica.pedidos[x].mostrarPedidos
                                 print("--------------")
+                            
                         
-                    
-                    elif int(input("Ingrese opción: ")) == 2:
+                    elif opc_list == "2":
                         print("Pedidos entregados:")
                         print("--------------")
                         for x in range(0,len(sistema_fabrica.pedidos)):
@@ -181,8 +183,8 @@ def main():
                                 sistema_fabrica.pedidos[x].mostrarPedidos
                                 print("--------------")
                         
-                    
-                    elif int(input("Ingrese opción: ")) == 3:
+                        
+                    elif opc_list == "3":
                         print("Pedidos registrados:")
                         print("--------------")
                         for ped in sistema_fabrica.pedidos:
@@ -191,7 +193,7 @@ def main():
 
                     else:
                         print("Opción inválida.")
-                        break
+                        
 
                 elif opc_list == "3":  # Máquinas
                     print("Máquinas registradas:")
@@ -215,18 +217,6 @@ def main():
                         print(f"Código: {p.codigo} - Descripción: {p.descPieza} - Costo: {p.costoPieza} - Stock: {p.cantidadPieza}")
                         print("--------------")
                     sistema_fabrica.listar_faltantes_pedidos_pendientes()
-
-                        # print("Verificando piezas faltantes para pedidos pendientes:")
-                        # print("--------------")
-                        # for pedido in sistema_fabrica.pedidos:
-                        #     if pedido.estado == "Pendiente":
-                        #         maquina_obj = obtener_maquina_objeto(sistema_fabrica, pedido.maquina)  
-                        #         if maquina_obj != 0:
-                        #             for msg in Maquina.maquina_obj.faltantes:
-                        #                 print(msg)
-                        #         else:
-                        #             print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
-
                         
 
                 elif opc_list == "5":  # Contabilidad
@@ -245,9 +235,8 @@ def main():
                     print(f"Ganancia bruta: ${ganancia:.2f}")
                     print(f"Impuesto (25%): ${impuesto:.2f}")
                     print(f"Ganancia final (después de impuestos): ${ganancia_final:.2f}")
-
-                    
-
+                    print("--------------")
+        
                 elif opc_list == "6":
                     break
 
@@ -261,11 +250,7 @@ def main():
         else:
             print("Opción inválida.")
 
-# def obtener_maquina_objeto(sistema, codigo_o_desc):
-#     for maquina in sistema.maquinas:
-#         if str(maquina.codigo) == str(codigo_o_desc) or maquina.descripcion == codigo_o_desc:
-#             return maquina
-#     return None
+
 
 if __name__ == "__main__":
     main()
