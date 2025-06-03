@@ -29,7 +29,6 @@ class Sistema:
 
     def agregar_pedido(self, pedido):
         self.pedidos.append(pedido)
-
     def agregar_reposicion(self, reposicion):
         self.reposiciones.append(reposicion)
         # actualizar stock
