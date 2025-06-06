@@ -75,12 +75,13 @@ class Sistema:
     def listar_faltantes_pedidos_pendientes(self):
         print("Verificando piezas faltantes para pedidos pendientes:")
         print("--------------")
+        envio=False
         for pedido in self.pedidos:
             if pedido.estado == "Pendiente":
-                # Si pedido.maquina es un objeto:
+                
                 maquina = pedido.maquina
 
-                # Si no es un objeto, buscarlo por código o descripción:
+                
                 if isinstance(maquina, str) or isinstance(maquina, int):
                     maquina = self.obtener_maquina_objeto(maquina)
 
@@ -101,11 +102,14 @@ class Sistema:
                     if faltantes:
                         for msg in faltantes:
                             print(msg)
-                    else:
-                        print(f"Pedido del cliente ID {pedido.cliente.id}: No faltan piezas para la máquina '{maquina.descripcion}'")
-                else:
-                    print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
-    
+                            
+                #     else:
+                #         print(f"Pedido del cliente ID {pedido.cliente.id}: No faltan piezas para la máquina '{maquina.descripcion}'")
+                # else:
+                #     print(f"No se encontró la máquina para el pedido del cliente ID {pedido.cliente.id}")
+        if not envio:
+            print("No faltan piezas para los pedidos pendientes.")
+
     def obtener_maquina_objeto(self, codigo_o_desc):
         for maquina in self.maquinas:
             if str(maquina.codigo) == str(codigo_o_desc) or maquina.descripcion.lower() == str(codigo_o_desc).lower():
