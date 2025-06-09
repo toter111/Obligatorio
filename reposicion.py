@@ -2,33 +2,33 @@ from pieza import Pieza
 
 class Reposicion:
     def __init__(self, pieza, cantidad, fecha):
-        self._pieza = pieza
-        self._cantidad = cantidad
-        self._fecha = fecha
+        self.__pieza = pieza
+        self.__cantidad = cantidad
+        self.__fecha = fecha
 
     @property
     def pieza(self):
-        return self._pieza
+        return self.__pieza
     
     @pieza.setter
     def pieza(self, value):
-        self._pieza = value
+        self.__pieza = value
         
     @property
     def cantidad(self):
-        return self._cantidad
+        return self.__cantidad
     
     @cantidad.setter
     def cantidad(self, value):
-        self._cantidad = value
+        self.__cantidad = value
         
     @property
     def fecha(self):
-        return self._fecha
+        return self.__fecha
     
     @fecha.setter
     def fecha(self, value):
-        self._fecha = value
+        self.__fecha = value
 
     def costo(self):
         return self.cantidad * self.pieza.costo_unitario()

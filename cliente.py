@@ -47,7 +47,7 @@ class ClienteParticular(Cliente):
     
     @cedula.setter
     def cedula(self, value):
-        self._cedula = value
+        self.__cedula = value
         
     @property
     def nombreCompleto(self):
