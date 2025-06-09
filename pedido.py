@@ -4,51 +4,51 @@ from maquina import Maquina
 
 class Pedido:
     def __init__(self, cliente, maquina, fechaRecibido=None, fechaEntregado=None, estado="Pendiente"):
-        self._cliente = cliente
-        self._maquina = maquina
-        self._fechaRecibido = fechaRecibido or datetime.now()
-        self._fechaEntregado = fechaEntregado
-        self._estado = estado
+        self.__cliente = cliente
+        self.__maquina = maquina
+        self.__fechaRecibido = fechaRecibido or datetime.now()
+        self.__echaEntregado = fechaEntregado
+        self.__estado = estado
 
     @property
     def cliente(self):
-        return self._cliente
+        return self.__cliente
     
     @cliente.setter
     def cliente(self, value):
-        self._cliente = value
+        self.__cliente = value
         
     @property
     def maquina(self):
-        return self._maquina
+        return self.__maquina
     
     @maquina.setter
     def maquina(self, value):
-        self._maquina = value
+        self.__maquina = value
         
     @property
     def fechaRecibido(self):
-        return self._fechaRecibido
+        return self.__fechaRecibido
     
     @fechaRecibido.setter
     def fechaRecibido(self, value):
-        self._fechaRecibido = value
+        self.__fechaRecibido = value
         
     @property
     def fechaEntregado(self):
-        return self._fechaEntregado
+        return self.__fechaEntregado
     
     @fechaEntregado.setter
     def fechaEntregado(self, value):
-        self._fechaEntregado = value
+        self.__fechaEntregado = value
         
     @property
     def estado(self):
-        return self._estado
+        return self.__estado
     
     @estado.setter
     def estado(self, value):
-        self._estado = value
+        self.__estado = value
 
     def precio(self):
         precio_base = self.maquina.costo_produccion() * 1.5

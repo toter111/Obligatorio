@@ -36,15 +36,8 @@ class Pieza:
     @cantidadPieza.setter
     def cantidadPieza(self, value):
         self.__cantidadPieza = value
-
-    def actualizar(self):
-        pass
-
     def costo_unitario(self):
         return self.costoPieza * 1.5
-    
-    def actualizar_pieza(self):
-        pass
 
     def cantidad(self):
         return self.cantidadPieza
