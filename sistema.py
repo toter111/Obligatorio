@@ -8,90 +8,90 @@ from pedido import Pedido
 
 class Sistema:
     def __init__(self):
-        self._maquinas = []
-        self._piezas = []
-        self._clientes = []
-        self._pedidos = []
-        self._reposiciones = []
-        self._codigo_pieza = 1
-        self._codigo_maquina = 1
-        self._codigo_cliente = 1
+        self.__maquinas = []
+        self.__piezas = []
+        self.__clientes = []
+        self.__pedidos = []
+        self.__reposiciones = []
+        self.__codigo_pieza = 1
+        self.__codigo_maquina = 1
+        self.__codigo_cliente = 1
 
     @property
     def maquinas(self):
-        return self._maquinas
+        return self.__maquinas
     
     @property
     def piezas(self):
-        return self._piezas
+        return self.__piezas
     
     @property
     def clientes(self):
-        return self._clientes
+        return self.__clientes
     
     @property
     def pedidos(self):
-        return self._pedidos
+        return self.__pedidos
     
     @property
     def reposiciones(self):
-        return self._reposiciones
+        return self.__reposiciones
     
     @property
     def codigo_pieza(self):
-        return self._codigo_pieza
+        return self.__codigo_pieza
     
     @codigo_pieza.setter
     def codigo_pieza(self, value):
-        self._codigo_pieza = value
+        self.__codigo_pieza = value
         
     @property
     def codigo_maquina(self):
-        return self._codigo_maquina
+        return self.__codigo_maquina
     
     @codigo_maquina.setter
     def codigo_maquina(self, value):
-        self._codigo_maquina = value
+        self.__codigo_maquina = value
         
     @property
     def codigo_cliente(self):
-        return self._codigo_cliente
+        return self.__codigo_cliente
     
     @codigo_cliente.setter
     def codigo_cliente(self, value):
-        self._codigo_cliente = value
+        self.__codigo_cliente = value
 
     def agregar_cliente(self, cliente):
-        self._clientes.append(cliente)
+        self.__clientes.append(cliente)
 
     def agregar_pieza(self, pieza):
-        self._piezas.append(pieza)
+        self.__piezas.append(pieza)
 
     def agregar_maquina(self, maquina):
-        self._maquinas.append(maquina)
+        self.__maquinas.append(maquina)
 
     def agregar_pedido(self, pedido):
-        self._pedidos.append(pedido)
+        self.__pedidos.append(pedido)
         
     def agregar_reposicion(self, reposicion):
-        self._reposiciones.append(reposicion)
+        self.__reposiciones.append(reposicion)
         # actualizar stock
         reposicion.pieza.cantidadPieza += reposicion.cantidad 
 
     def buscar_pieza_por_codigo(self, codigo):
-        for pieza in self._piezas:
+        for pieza in self.__piezas:
             if pieza.codigo == codigo:
                 return pieza
         return None
 
     def buscar_maquina_por_codigo(self, codigo):
-        for maquina in self._maquinas:
+        for maquina in self.__maquinas:
             if maquina.codigo == codigo:
                 return maquina
         return None
 
     def buscar_cliente_por_id(self, id):
-        for cliente in self._clientes:
+        for cliente in self.__clientes:
             if cliente.id == id:
                 return cliente
         return None
@@ -112,14 +112,14 @@ class Sistema:
                     print(f"Pedido de cliente {pedido.cliente.id} entregado tras reposición.")
     
     def procesar_todos_los_pedidos(self):
-        for pedido in self._pedidos:
+        for pedido in self.__pedidos:
             self.procesar_pedidos_pendientes(pedido)
     
     def listar_faltantes_pedidos_pendientes(self):
         print("Verificando piezas faltantes para pedidos pendientes:")
         print("--------------")
         envio = False
-        for pedido in self._pedidos:
+        for pedido in self.__pedidos:
             if pedido.estado == "Pendiente":
                 maquina = pedido.maquina
 
@@ -148,7 +148,7 @@ class Sistema:
             print("No faltan piezas para los pedidos pendientes.")
 
     def obtener_maquina_objeto(self, codigo_o_desc):
-        for maquina in self._maquinas:
+        for maquina in self.__maquinas:
             if str(maquina.codigo) == str(codigo_o_desc) or maquina.descripcion.lower() == str(codigo_o_desc).lower():
                 return maquina
         return None
