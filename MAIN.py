@@ -1,5 +1,4 @@
 
-
 from datetime import datetime
 
 from cliente import Cliente, ClienteParticular, Empresa
@@ -8,7 +7,7 @@ from maquina import Maquina
 from pedido import Pedido
 from reposicion import Reposicion
 from sistema import Sistema
-
+from exception import Exception
 def main():
     sistema_fabrica = Sistema()
 
@@ -31,9 +30,18 @@ def main():
                 opc_reg = input("Ingrese opción: ")
 
                 if opc_reg == "1":  # Pieza
-                    desc = input("Descripción de la pieza: ")
+                    while True:
+                        desc = input("Descripción de la pieza: ")
+                        unica = True
+                        for pieza in sistema_fabrica.piezas:
+                            if pieza.descPieza == desc:
+                                unica = False
+                        if not unica:
+                            print("Pieza con esa descripción ya existe.")
+                        else:
+                                break
                     costo = float(input("Costo de fabricacion de la pieza: "))
-                    cantidad = int(input("Cantidad en stock: "))
+                    cantidad = Exception.input_int("Cantidad en stock: ")
                     
                     
                     p = Pieza(desc, costo, cantidad)
@@ -45,7 +53,16 @@ def main():
 
                 elif opc_reg == "2":  # Máquina
                     codigo = sistema_fabrica.codigo_maquina
-                    descripcion = input("Descripción de la máquina: ")
+                    while True:
+                        descripcion = input("Descripción de la máquina: ")
+                        unica=True
+                        for j in sistema_fabrica.maquinas:
+                            if j.descripcion == descripcion:
+                                unica=False   
+                        if not unica:
+                            print("Máquina con esa descripción ya existe.")
+                        else:
+                            break                
                     m = Maquina(codigo, descripcion)
                     sistema_fabrica.codigo_maquina += 1
 
@@ -58,7 +75,7 @@ def main():
                         print("Piezas disponibles:")
                         for p in sistema_fabrica.piezas:
                             print(f"{p.codigo} - {p.descPieza} (Stock: {p.cantidadPieza})")
-                        cod_pieza = int(input("Ingrese código de la pieza: "))
+                        cod_pieza = Exception.input_int("Ingrese código de la pieza: ")
                         pieza_req = sistema_fabrica.buscar_pieza_por_codigo(cod_pieza)
                         if pieza_req is None:
                             print("Pieza no encontrada.")
@@ -71,26 +88,61 @@ def main():
                 elif opc_reg == "3":  # Cliente
                     tipo = int(input("¿Cliente Particular (1) o Empresa (2)? "))
                     if tipo == 1:
-                        cedula = input("Cédula: ")
+                        while True:
+                            cedula = input("Cédula sin guiones:")
+                            if len(cedula) != 8 or not cedula.isdigit():
+                                print("Cédula inválida. Debe tener 8 dígitos.")
+                            else:
+                                unica = True
+                                for cliente in sistema_fabrica.clientes:
+                                    if cedula == cliente.cedula:
+                                        unica = False
+                                if not unica:
+                                    print("Cédula ya registrada.")
+                                else: 
+                                    break
+                        while True:
+                            telefono = input("Teléfono: ")
+                            if len(telefono) != 9 or not telefono.isdigit():
+                                print("Teléfono inválido. Debe tener 9 dígitos.")
+                            elif telefono[0] != "0":
+                                print("Teléfono inválido. Debe comenzar con 0.")
+                            else:
+                                break
                         nombre = input("Nombre completo: ")
-                        telefono = input("Teléfono: ")
                         correo = input("Correo electrónico: ")
                         c = ClienteParticular(sistema_fabrica.codigo_cliente, telefono, correo, cedula, nombre)
                         sistema_fabrica.codigo_cliente += 1
                         sistema_fabrica.agregar_cliente(c)
                         print(f"Cliente particular '{nombre}' agregado con ID {c.id}.")
                     elif tipo == 2:
-                        rut = input("RUT: ")
-                        nombre = input("Nombre empresa: ")
-                        web = input("Página web: ")
-                        telefono = input("Teléfono: ")
+                        while True:
+                            telefono = input("Teléfono: ")
+                            if len(telefono) != 9 or not telefono.isdigit():
+                                print("Teléfono inválido. Debe tener 9 dígitos.")
+                            elif telefono[0] != "0":
+                                print("Teléfono inválido. Debe comenzar con 0.")
+                            else:
+                                break
+                        while True:
+                            nombre = input("Nombre empresa: ")
+                            unica = True
+                            for i in sistema_fabrica.nombres_empresas:
+                                if nombre == i:
+                                    unica = False
+                            if not unica:
+                                print("Empresa ya registrada.")
+                            else:
+                                break
                         correo = input("Correo electrónico: ")
+                        rut = input("RUT: ")
+                        web = input("Página web: ")
                         c = Empresa(sistema_fabrica.codigo_cliente, telefono, correo, rut, nombre, web)
                         sistema_fabrica.codigo_cliente += 1
                         sistema_fabrica.agregar_cliente(c)
                         print(f"Empresa '{nombre}' agregada con ID {c.id}.")
                     else:
-                        print("Tipo inválido.")
+                        print("Opcion inválido.")
 
                 elif opc_reg == "4":  # Pedido
                     # Seleccionar cliente
@@ -98,7 +150,7 @@ def main():
                     for c in sistema_fabrica.clientes:
                         print(f"{c.id} - ", end="")
                         c.mostrar_datos()
-                    id_cliente = int(input("Ingrese ID del cliente: "))
+                    id_cliente = Exception.input_int("Ingrese ID del cliente: ")
                     cliente = sistema_fabrica.buscar_cliente_por_id(id_cliente)
                     if cliente is None:
                         print("Cliente no encontrado.")
@@ -107,7 +159,7 @@ def main():
                     print("Máquinas disponibles:")
                     for m in sistema_fabrica.maquinas:
                         print(f"{m.codigo} - {m.descripcion}")
-                    cod_maquina = int(input("Ingrese código de la máquina: "))
+                    cod_maquina = Exception.input_int("Ingrese código de la máquina: ")
                     maquina_sel = sistema_fabrica.buscar_maquina_por_codigo(cod_maquina)
                     if maquina_sel is None:
                         print("Máquina no encontrada.")
@@ -124,12 +176,12 @@ def main():
                     print("Piezas disponibles:")
                     for p in sistema_fabrica.piezas:
                         print(f"{p.codigo} - {p.descPieza} (Stock: {p.cantidadPieza})")
-                    cod_pieza = int(input("Ingrese código de la pieza para reposición: "))
+                    cod_pieza = Exception.input_int("Ingrese código de la pieza para reposición: ")
                     pieza = sistema_fabrica.buscar_pieza_por_codigo(cod_pieza)
                     if pieza is None:
                         print("Pieza no encontrada.")
                         continue
-                    cant = int(input("Cantidad a reponer: "))
+                    cant = Exception.input_int("Cantidad a reponer: ")
                     fecha = datetime.now()
                     repos = Reposicion(pieza, cant, fecha)
                     sistema_fabrica.agregar_reposicion(repos)

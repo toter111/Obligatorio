@@ -43,7 +43,7 @@ class Maquina:
 
     def costo_produccion(self):
         total = 0
-        for i, pieza in enumerate(self._piezas_requeridas):
+        for i, pieza in enumerate(self.piezas_requeridas):
             total += pieza.costoPieza * self.__cantidades[i]
         return total
 
