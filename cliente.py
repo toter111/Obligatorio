@@ -38,12 +38,12 @@ class Cliente(ABC):
 class ClienteParticular(Cliente):
     def __init__(self, id, telefono, correoE, cedula, nombreCompleto):
         super().__init__(id, telefono, correoE)
-        self._cedula = cedula
-        self._nombreCompleto = nombreCompleto
+        self.__cedula = cedula
+        self.__nombreCompleto = nombreCompleto
 
     @property
     def cedula(self):
-        return self._cedula
+        return self.__cedula
     
     @cedula.setter
     def cedula(self, value):
@@ -77,7 +77,7 @@ class Empresa(Cliente):
 
     @property
     def RUT(self):
-        return self._RUT
+        return self.__RUT
     
     @RUT.setter
     def RUT(self, value):
