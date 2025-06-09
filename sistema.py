@@ -103,7 +103,7 @@ class Sistema:
                 pieza.cantidadPieza -= cantidad
 
     def procesar_pedidos_pendientes(self, pedido):
-        for pedido in self._pedidos:
+        for pedido in self.pedidos:
             if pedido.estado == "Pendiente":
                 if pedido.maquina.disponibilidad():
                     pedido.estado = "Entregado"

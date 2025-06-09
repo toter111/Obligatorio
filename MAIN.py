@@ -7,9 +7,10 @@ from maquina import Maquina
 from pedido import Pedido
 from reposicion import Reposicion
 from sistema import Sistema
-from exception import Exception
+from exception import InputUtils
 def main():
     sistema_fabrica = Sistema()
+    exception = Exception()
 
     while True:
         print("\n--- Menú Principal ---")
@@ -40,8 +41,8 @@ def main():
                             print("Pieza con esa descripción ya existe.")
                         else:
                                 break
-                    costo = float(input("Costo de fabricacion de la pieza: "))
-                    cantidad = Exception.input_int("Cantidad en stock: ")
+                    costo = InputUtils.input_float("Costo de fabricacion de la pieza: ")
+                    cantidad = InputUtils.input_int("Cantidad en stock: ")
                     
                     
                     p = Pieza(desc, costo, cantidad)
@@ -75,18 +76,18 @@ def main():
                         print("Piezas disponibles:")
                         for p in sistema_fabrica.piezas:
                             print(f"{p.codigo} - {p.descPieza} (Stock: {p.cantidadPieza})")
-                        cod_pieza = Exception.input_int("Ingrese código de la pieza: ")
+                        cod_pieza = InputUtils.input_int("Ingrese código de la pieza: ")
                         pieza_req = sistema_fabrica.buscar_pieza_por_codigo(cod_pieza)
                         if pieza_req is None:
                             print("Pieza no encontrada.")
                             continue
-                        cantidad_req = int(input("Cantidad necesaria de esta pieza para fabricar la máquina: "))
+                        cantidad_req = InputUtils.input_int("Cantidad necesaria de esta pieza para fabricar la máquina: ")
                         m.agregar_requerimiento(pieza_req, cantidad_req)
                     sistema_fabrica.agregar_maquina(m)
                     print(f"Máquina '{descripcion}' agregada con código {codigo}.")
 
                 elif opc_reg == "3":  # Cliente
-                    tipo = int(input("¿Cliente Particular (1) o Empresa (2)? "))
+                    tipo = InputUtils.input_int("¿Cliente Particular (1) o Empresa (2)? ")
                     if tipo == 1:
                         while True:
                             cedula = input("Cédula sin guiones:")
@@ -150,7 +151,7 @@ def main():
                     for c in sistema_fabrica.clientes:
                         print(f"{c.id} - ", end="")
                         c.mostrar_datos()
-                    id_cliente = Exception.input_int("Ingrese ID del cliente: ")
+                    id_cliente = InputUtils.input_int("Ingrese ID del cliente: ")
                     cliente = sistema_fabrica.buscar_cliente_por_id(id_cliente)
                     if cliente is None:
                         print("Cliente no encontrado.")
@@ -159,7 +160,7 @@ def main():
                     print("Máquinas disponibles:")
                     for m in sistema_fabrica.maquinas:
                         print(f"{m.codigo} - {m.descripcion}")
-                    cod_maquina = Exception.input_int("Ingrese código de la máquina: ")
+                    cod_maquina = InputUtils.input_int("Ingrese código de la máquina: ")
                     maquina_sel = sistema_fabrica.buscar_maquina_por_codigo(cod_maquina)
                     if maquina_sel is None:
                         print("Máquina no encontrada.")
@@ -176,12 +177,12 @@ def main():
                     print("Piezas disponibles:")
                     for p in sistema_fabrica.piezas:
                         print(f"{p.codigo} - {p.descPieza} (Stock: {p.cantidadPieza})")
-                    cod_pieza = Exception.input_int("Ingrese código de la pieza para reposición: ")
+                    cod_pieza = InputUtils.input_int("Ingrese código de la pieza para reposición: ")
                     pieza = sistema_fabrica.buscar_pieza_por_codigo(cod_pieza)
                     if pieza is None:
                         print("Pieza no encontrada.")
                         continue
-                    cant = Exception.input_int("Cantidad a reponer: ")
+                    cant = InputUtils.input_int("Cantidad a reponer: ")
                     fecha = datetime.now()
                     repos = Reposicion(pieza, cant, fecha)
                     sistema_fabrica.agregar_reposicion(repos)
