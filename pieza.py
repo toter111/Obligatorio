@@ -36,6 +36,8 @@ class Pieza:
     @cantidadPieza.setter
     def cantidadPieza(self, value):
         self.__cantidadPieza = value
+    
+    
     def costo_unitario(self):
         return self.costoPieza * 1.5
 
