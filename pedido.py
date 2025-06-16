@@ -64,3 +64,9 @@ class Pedido:
     @property
     def faltantes(self):
         pass
+
+    def es_empresaP(self):
+        if self.cliente.es_empresa:
+            return True
+        else:
+            return False
