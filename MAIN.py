@@ -275,13 +275,14 @@ def main():
                     precio_total = 0
                     costo_total=0
                     for ped in sistema_fabrica.pedidos:
-                        if ped.es_empresaP():
-                            precio_total += ped.precio()
-                            pre = ped.precio() / 0.8
-                            costo_total += pre / 1.5
-                        else:
-                            precio_total += ped.precio()
-                            costo_total = precio_total / 1.5
+                        if ped.estado == "Entregado":
+                            if ped.es_empresaP():
+                                precio_total += ped.precio()
+                                pre = ped.precio() / 0.8
+                                costo_total += pre / 1.5
+                            else:
+                                precio_total += ped.precio()
+                                costo_total = precio_total / 1.5
                     ganancia = precio_total - costo_total
                     impuesto = ganancia * 0.25
                     ganancia_final = ganancia - impuesto
