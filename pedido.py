@@ -7,7 +7,7 @@ class Pedido:
         self.__cliente = cliente
         self.__maquina = maquina
         self.__fechaRecibido = fechaRecibido or datetime.now()
-        self.__echaEntregado = fechaEntregado
+        self.__fechaEntregado = fechaEntregado
         self.__estado = estado
 
     @property
